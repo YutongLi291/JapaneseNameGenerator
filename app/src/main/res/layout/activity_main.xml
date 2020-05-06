@@ -7,15 +7,17 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:textIsSelectable="true"
+
         android:id="@+id/generated_surname_view"
         android:layout_width="180dp"
         android:layout_height="61dp"
+        android:layout_marginEnd="16dp"
+        android:text="晋三"
         android:textAlignment="viewEnd"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="40sp"
-        android:text="晋三"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/generated_firstname_view"
         app:layout_constraintHorizontal_bias="0.069"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -24,11 +26,11 @@
 
     <TextView
 
-        android:textIsSelectable="true"
+
         android:id="@+id/generated_firstname_view"
         android:layout_width="180dp"
-        android:text="安倍"
         android:layout_height="61dp"
+        android:text="安倍"
         android:textAlignment="viewStart"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="40sp"
@@ -42,31 +44,31 @@
         app:layout_constraintVertical_bias="0.382" />
 
     <TextView
-        android:textIsSelectable="true"
-    android:id="@+id/generated_surname_view_hiragana"
-    android:layout_width="179dp"
-    android:layout_height="50dp"
-    android:textAlignment="viewEnd"
-    android:text="しんぞう"
+
+        android:id="@+id/generated_surname_view_hiragana"
+        android:layout_width="179dp"
+        android:layout_height="50dp"
+        android:text="しんぞう"
+        android:textAlignment="viewEnd"
         android:textColor="@android:color/holo_blue_dark"
-    android:textSize="30sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.068"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/generated_surname_view"
-    app:layout_constraintVertical_bias="0.0" />
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/generated_firstname_view_hiragana"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/generated_surname_view"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:textIsSelectable="true"
+
 
         android:id="@+id/generated_firstname_view_hiragana"
         android:layout_width="185dp"
         android:layout_height="50dp"
-        android:textAlignment="viewStart"
         android:text="あべ"
+        android:textAlignment="viewStart"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -80,19 +82,19 @@
 
     <Spinner
         android:id="@+id/gender_select"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="116dp"
+        android:layout_height="25dp"
         android:background="@null"
         android:clickable="true"
         android:entries="@array/gender_array"
         android:text="Select a Gender"
         android:textAlignment="viewEnd"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.664" />
+        app:layout_constraintBottom_toTopOf="@+id/get_name_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gender_view"
+        app:layout_constraintVertical_bias="0.895" />
 
     <Button
         style="?android:attr/borderlessButtonStyle"
@@ -100,6 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Generate!"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -177,6 +180,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
+        app:backgroundTint="@android:color/black"
+        android:outlineAmbientShadowColor="@android:color/black"
         android:backgroundTint="@android:color/white"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"

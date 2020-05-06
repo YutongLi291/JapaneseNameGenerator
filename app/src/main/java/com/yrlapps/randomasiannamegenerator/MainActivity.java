@@ -116,10 +116,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String genderSpinnerSelectedItem =(String)genderSpinner.getSelectedItem();
-                if (genderSpinnerSelectedItem.equals("Female")){
+                if (genderSpinnerSelectedItem.equals("Female Name")){
                     gender = 2;
                 }
-                else if (genderSpinnerSelectedItem.equals("Male")){
+                else if (genderSpinnerSelectedItem.equals("Male Name")){
                     gender = 1;
                 }
                 else{
