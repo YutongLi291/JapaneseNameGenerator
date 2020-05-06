@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RandomAsianNameGenerator</string>
+    <string name="app_name">Japanese Name Generator</string>
     <string name="gender_promt">Choose a gender</string>
     <string-array name="gender_array">
         <item>Any Gender</item>

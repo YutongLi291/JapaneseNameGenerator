@@ -166,6 +166,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:background="@android:color/white"
+        android:outlineAmbientShadowColor="@android:color/black"
         android:backgroundTint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
