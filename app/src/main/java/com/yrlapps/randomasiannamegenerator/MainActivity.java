@@ -17,7 +17,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.github.jikyo.romaji.Transliterator;
-import com.mariten.kanatools.KanaConverter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+    KanaToRomaji kanaToRomaji;
     String japaneseJsonUrl = "https://raw.githubusercontent.com/YutongLi291/RandomAsianNameGenerator/master/db/japanese_names.json";
     TextView surnameView;
     TextView firstnameView;
@@ -46,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        kanaToRomaji = new KanaToRomaji();
         surnameView = findViewById(R.id.generated_surname_view);
         firstnameView = findViewById(R.id.generated_firstname_view);
         firstnameHiraganaView = findViewById(R.id.generated_firstname_view_hiragana);
@@ -201,17 +201,18 @@ public class MainActivity extends AppCompatActivity {
         surname = surnames.getJSONArray((int) (Math.random() * surnames.length()));
         surnameView.setText(surname.getString(0));
         surnameHiraganaView.setText(surname.getString(1));
-        surnameRomajiView.setText(Transliterator.transliterate("" + surnameHiraganaView.getText()).get(0));
+        surnameRomajiView.setText(kanaToRomaji.convert("" + surnameHiraganaView.getText()));
     }
 
     private void setNameTexts(JSONArray firstname) throws JSONException {
         firstnameView.setText(firstname.getString(0));
         firstnameHiraganaView.setText(firstname.getString(1));
         String temp =""+firstnameHiraganaView.getText();
-        firstnameRomajiView.setText(Transliterator.transliterate( temp).get(0));
+        firstnameRomajiView.setText(kanaToRomaji.convert(temp));
 
-//        List<String> stirngs  = Transliterator.transliterate("しば");
-//        System.out.println(stirngs);
+//        String shashin =kanaToRomaji.convert("しゃしん");
+//        System.out.println(shashin);
+
     }
 
 

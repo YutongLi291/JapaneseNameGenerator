@@ -9,7 +9,7 @@ android {
     }
     defaultConfig {
         applicationId "com.yrlapps.randomasiannamegenerator"
-        minSdkVersion 21
+        minSdkVersion defaultMinSdkVersion
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -38,6 +38,4 @@ dependencies {
     implementation 'com.mariten:kanatools:1.3.0'
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'com.github.jikyo:romaji:0.0.3'
-    implementation files('libs\\kuromoji-core-1.0-SNAPSHOT.jar')
-    implementation files('libs\\kuromoji-ipadic-1.0-SNAPSHOT.jar')
 }
