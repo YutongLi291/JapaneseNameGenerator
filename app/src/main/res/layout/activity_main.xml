@@ -7,40 +7,169 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:id="@+id/generated_name_view"
+        android:textIsSelectable="true"
+        android:id="@+id/generated_surname_view"
+        android:layout_width="180dp"
+        android:layout_height="61dp"
+        android:textAlignment="viewEnd"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="40sp"
+        android:text="安倍"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.069"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.382" />
+
+    <TextView
+
+        android:textIsSelectable="true"
+        android:id="@+id/generated_firstname_view"
+        android:layout_width="180dp"
+        android:text="晋三"
+        android:layout_height="61dp"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.922"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.382" />
+
+    <TextView
+        android:textIsSelectable="true"
+    android:id="@+id/generated_surname_view_hiragana"
+    android:layout_width="179dp"
+    android:layout_height="50dp"
+    android:textAlignment="viewEnd"
+    android:text="あべ"
+        android:textColor="@android:color/holo_blue_dark"
+    android:textSize="30sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.068"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/generated_surname_view"
+    app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:textIsSelectable="true"
+
+        android:id="@+id/generated_firstname_view_hiragana"
+        android:layout_width="185dp"
+        android:layout_height="50dp"
+        android:textAlignment="viewStart"
+        android:text="しんぞう"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.942"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/generated_firstname_view"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Spinner
-        android:clickable="true"
         android:id="@+id/gender_select"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@null"
+        android:clickable="true"
         android:entries="@array/gender_array"
-        android:text="Any Gender"
+        android:text="Select a Gender"
         android:textAlignment="viewEnd"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.579" />
+        app:layout_constraintVertical_bias="0.664" />
 
     <Button
+        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/get_name_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Generate!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.658" />
+        app:layout_constraintVertical_bias="0.896" />
+
+    <TextView
+        android:id="@+id/gender_view"
+        android:layout_width="179dp"
+        android:layout_height="75dp"
+        android:text="Male"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.149" />
+
+    <TextView
+        android:id="@+id/firstname_romaji_view"
+        android:layout_width="179dp"
+        android:layout_height="75dp"
+        android:text="Shinzou"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.918"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/generated_firstname_view_hiragana"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/surname_romaji_view"
+        android:layout_width="179dp"
+        android:layout_height="75dp"
+        android:text="Abe"
+        android:textAlignment="viewEnd"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/firstname_romaji_view"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/generated_surname_view_hiragana"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:background="@android:color/white"
+        android:backgroundTint="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.894"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9"
+        app:srcCompat="?attr/actionModeCopyDrawable" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
