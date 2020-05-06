@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     KanaToRomaji kanaToRomaji;
     String japaneseJsonUrl = "https://raw.githubusercontent.com/YutongLi291/RandomAsianNameGenerator/master/db/japanese_names.json";
     TextView surnameView;
+    Button copyButton;
     TextView firstnameView;
     TextView surnameHiraganaView;
     TextView firstnameHiraganaView;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         kanaToRomaji = new KanaToRomaji();
+        copyButton = findViewById(R.id.copy_button);
         surnameView = findViewById(R.id.generated_surname_view);
         firstnameView = findViewById(R.id.generated_firstname_view);
         firstnameHiraganaView = findViewById(R.id.generated_firstname_view_hiragana);
@@ -57,6 +59,12 @@ public class MainActivity extends AppCompatActivity {
         genderSpinner = findViewById(R.id.gender_select);
         getNameButton = findViewById(R.id.get_name_button);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
+        copyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         getNameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,57 +85,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-//    private void getrandomFirstname() {
-//        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, japaneseJsonUrl, null, new Response.Listener<JSONObject>() {
-//            @Override
-//            public void onResponse(JSONObject response) {
-//                try {
-//
-//                    JSONArray firstname;
-//                    JSONObject firstnames = response.getJSONObject("first_name");
-//                    switch (gender) {
-//                        case 1:    //Male case
-//                            JSONArray malenames = firstnames.getJSONArray("male");
-//                            firstname = malenames.getJSONArray((int) (Math.random() * malenames.length()));
-//                            firstnameView.setText(firstname.getString(0));
-//                            break;
-//                        case 2:
-//                            JSONArray femalenames = firstnames.getJSONArray("female");
-//                            firstname = femalenames.getJSONArray((int) (Math.random() * femalenames.length()));
-//                            firstnameView.setText(firstname.getString(0));
-//                            break;
-//                        default:
-////                            int totalLength =firstnames.getJSONArray("male").length() +firstnames.getJSONArray("female").length();
-//                            double genderRandom = Math.random();
-//                            int randomIndex;
-//                            if (genderRandom < 0.5){                //Male
-//                                randomIndex=(int)(Math.random()*firstnames.getJSONArray("male").length());
-//                                 malenames = firstnames.getJSONArray("male");
-//                                 firstname= malenames.getJSONArray(randomIndex);
-//                                 firstnameView.setText(firstname.getString(0));
-//                            }
-//                            else{
-//                                randomIndex=(int)(Math.random()*firstnames.getJSONArray("female").length());
-//                                femalenames = firstnames.getJSONArray("female");
-//                                firstname = femalenames.getJSONArray(randomIndex);
-//                                firstnameView.setText(firstname.getString(0));
-//                            }
-//
-//
-//                    }
-//                } catch (JSONException e) {
-//                    Log.e("yrl", "japanese surname parsing problem");
-//                }
-//            }
-//
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//
-//            }
-//        });
-//        requestQueue.add(request);
-//    }
 
     public void getRandomName() {
 //        JSONObject surname;
@@ -201,18 +158,25 @@ public class MainActivity extends AppCompatActivity {
         surname = surnames.getJSONArray((int) (Math.random() * surnames.length()));
         surnameView.setText(surname.getString(0));
         surnameHiraganaView.setText(surname.getString(1));
-        surnameRomajiView.setText(kanaToRomaji.convert("" + surnameHiraganaView.getText()));
+        surnameRomajiView.setText(capitalize(kanaToRomaji.convert("" + surnameHiraganaView.getText())));
     }
 
     private void setNameTexts(JSONArray firstname) throws JSONException {
         firstnameView.setText(firstname.getString(0));
         firstnameHiraganaView.setText(firstname.getString(1));
         String temp =""+firstnameHiraganaView.getText();
-        firstnameRomajiView.setText(kanaToRomaji.convert(temp));
+        firstnameRomajiView.setText(capitalize(kanaToRomaji.convert(temp)));
 
 //        String shashin =kanaToRomaji.convert("しゃしん");
 //        System.out.println(shashin);
 
+    }
+    public static String capitalize(String str) {
+        if(str == null || str.isEmpty()) {
+            return str;
+        }
+
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
 
 
