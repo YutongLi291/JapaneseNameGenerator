@@ -1,7 +1,12 @@
 package com.yrlapps.randomasiannamegenerator;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -17,6 +23,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.github.jikyo.romaji.Transliterator;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     KanaToRomaji kanaToRomaji;
     String japaneseJsonUrl = "https://raw.githubusercontent.com/YutongLi291/RandomAsianNameGenerator/master/db/japanese_names.json";
     TextView surnameView;
-    Button copyButton;
+    FloatingActionButton copyButton;
     TextView firstnameView;
     TextView surnameHiraganaView;
     TextView firstnameHiraganaView;
@@ -37,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     TextView firstnameRomajiView;
     Spinner genderSpinner;
     Button getNameButton;
+    FloatingActionButton questionButton;
     int gender;  //0 is any, 1 is male, 2 is female.
     RequestQueue requestQueue;
     TextView genderView;
@@ -48,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         kanaToRomaji = new KanaToRomaji();
         copyButton = findViewById(R.id.copy_button);
+        questionButton = findViewById(R.id.question_button);
         surnameView = findViewById(R.id.generated_surname_view);
         firstnameView = findViewById(R.id.generated_firstname_view);
         firstnameHiraganaView = findViewById(R.id.generated_firstname_view_hiragana);
@@ -59,10 +68,48 @@ public class MainActivity extends AppCompatActivity {
         genderSpinner = findViewById(R.id.gender_select);
         getNameButton = findViewById(R.id.get_name_button);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
+        questionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Remember that the surname comes before the first name in Japanese!", Toast.LENGTH_SHORT).show();
+            }
+        });
         copyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final String[] options = {
+                        "Kanji","Hiragana","Romaji"
+                };
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
 
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Copy");
+                builder.setItems(options, new DialogInterface.OnClickListener() {@
+                        Override
+                public void onClick(DialogInterface dialog, int which) {
+                    String text;
+                    if ("Kanji".equals(options[which])) {
+                        text = surnameView.getText().toString() + firstnameView.getText().toString();
+                        ClipData clip = ClipData.newPlainText("text", text);
+                        clipboard.setPrimaryClip(clip);
+                        Toast.makeText(MainActivity.this, "Kanji name copied to clipboard!", Toast.LENGTH_SHORT).show();
+
+                    } else if ("Hiragana".equals(options[which])) {
+                        text = surnameHiraganaView.getText().toString() + firstnameHiraganaView.getText().toString();
+                        ClipData clip = ClipData.newPlainText("text", text);
+                        clipboard.setPrimaryClip(clip);
+                        Toast.makeText(MainActivity.this, "Hiragana name copied to clipboard!", Toast.LENGTH_SHORT).show();
+                    } else if ("Romaji".equals(options[which])) {
+                        text = surnameRomajiView.getText().toString() +  " "+ firstnameRomajiView.getText().toString();
+                        ClipData clip = ClipData.newPlainText("text", text);
+                        clipboard.setPrimaryClip(clip);
+                        Toast.makeText(MainActivity.this, "Romaji name copied to clipboard!", Toast.LENGTH_SHORT).show();
+                    }
+                    // the user clicked on colors[which]
+
+                }
+                });
+                builder.show();
             }
         });
         getNameButton.setOnClickListener(new View.OnClickListener() {
