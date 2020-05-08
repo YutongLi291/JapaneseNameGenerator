@@ -54,7 +54,6 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/generated_firstname_view_hiragana"
-        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -136,10 +135,10 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.918"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/generated_firstname_view_hiragana"
         app:layout_constraintTop_toBottomOf="@+id/generated_firstname_view_hiragana"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -166,6 +165,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:background="@android:color/white"
+        app:backgroundTint="@android:color/black"
         android:outlineAmbientShadowColor="@android:color/black"
         android:backgroundTint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
