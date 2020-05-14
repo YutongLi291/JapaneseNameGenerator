@@ -203,8 +203,8 @@ public class MainActivity extends AppCompatActivity {
         JSONArray surname;
         JSONArray surnames = response.getJSONArray("last_name");
         surname = surnames.getJSONArray((int) (Math.random() * surnames.length()));
-        surnameView.setText(surname.getString(0));
-        surnameHiraganaView.setText(surname.getString(1));
+        surnameView.setText(surname.getString(0) );
+        surnameHiraganaView.setText(surname.getString(1) + "  ");
         surnameRomajiView.setText(capitalize(kanaToRomaji.convert("" + surnameHiraganaView.getText())));
     }
 
