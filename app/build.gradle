@@ -12,7 +12,7 @@ android {
         applicationId "com.yrlapps.randomasiannamegenerator"
         minSdkVersion defaultMinSdkVersion
         targetSdkVersion 35
-        versionCode 5
+        versionCode 6
         versionName "1.0.5"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
